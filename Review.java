@@ -114,6 +114,25 @@ public class Review {
     return punc;
   }
 
+  public static double totalSentiment(String fileName)
+  {
+    String review = textToString(fileName);
+    double total = 0.0;
+
+    while(review.indexOf(" ") > 0 )
+    {
+      int space = review.indexOf(" ");
+      String word = review.substring(0, space);
+      double sentiment = sentimentVal(word);
+      total += sentiment;
+
+      review = review.substring(space+1);
+
+    } total += sentimentVal((review));
+    return total;
+  }
+
+
       /**
    * Returns the word after removing any beginning or ending punctuation
    */
