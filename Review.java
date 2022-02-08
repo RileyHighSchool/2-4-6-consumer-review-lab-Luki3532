@@ -93,6 +93,7 @@ public class Review {
       return sentiment.get(word.toLowerCase());
     }
     catch(Exception e)
+
     {
       return 0;
     }
@@ -187,7 +188,8 @@ public class Review {
     
   }
   
-  public static String fakeReview(String fileName){
+  public static String fakeReview(String fileName, String posNeg){
+
 	  String review = textToString(fileName);
 
 	  String newReview = "";
@@ -199,6 +201,13 @@ public class Review {
 
 		  newReview += review.substring(0, starLoc);
 		  //add a random adjective to new review
+      if(posNeg.toLowerCase().equals("positive")){
+        newReview += randomPositiveAdj();
+      } else if (posNeg.toLowerCase().equals("negative")){
+        newReview += randomNegativeAdj();
+      } else{
+        newReview += randomAdjective();
+      }
 		  newReview += randomAdjective();
 		  //cut off old review through starred adjective
 		  int spaceAfterStar = review.indexOf(" ", starLoc);
@@ -225,4 +234,5 @@ public class Review {
       return randomNegativeAdj();
     }
   }
+
 }
