@@ -234,5 +234,36 @@ public class Review {
       return randomNegativeAdj();
     }
   }
+  public static String everyAdjFree(String fileName)
+  {
+    //make string that will have all the adjectives replaced with free
+  
+    //loop through string
+    //look for stars
+    //replace that adj with free
+
+    //return the new string
+    
+	  String review = textToString(fileName);
+
+	  String freereview = "";
+    //loop for as many times as there is a *
+	  while (review.indexOf("*")>0 && review.length()>0)
+	  {
+		  //find index of *
+		  int starLoc = freereview.indexOf("*");
+      //int with length of word after star
+      // int starLocWordLen = review.substring(starLoc,1).length();
+      // adding everything before the * to the new string
+		  freereview += review.substring(0, starLoc);
+      //index of space
+      int indexOfSpace = review.indexOf(" ", starLoc);
+      // 
+      review = review.substring(starLoc+1,indexOfSpace);
+		  //cut off old review through starred adjective
+      freereview += "FREE!!";
+	  }
+    return freereview;
+  }
 
 }
